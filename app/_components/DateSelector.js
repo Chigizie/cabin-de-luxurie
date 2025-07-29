@@ -21,7 +21,7 @@ function DateSelector({ bookedDates }) {
         max={5}
         disabled={(curDate) =>
           isPast(curDate) ||
-          bookedDates.some((date) => isSameDay(date, curDate))
+          bookedDates?.some((date) => isSameDay(date, curDate))
         }
         excludeDisabled
         className=" text-gray-300 rounded-lg p-4 flex disabled:cursor-not-allowed disabled:text-gray-600"

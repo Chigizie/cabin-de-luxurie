@@ -1,7 +1,10 @@
 import DateSelector from "@/app/_components/DateSelector";
 import ReservationForm from "@/app/_components/ReservationForm";
 import { auth } from "@/app/_lib/auth";
-import { getBookingsByCabinId, getCabinById } from "@/app/_lib/data-services";
+import {
+  getBookingDatesByCabinId,
+  getCabinById,
+} from "@/app/_lib/data-services";
 
 import Image from "next/image";
 
@@ -17,7 +20,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 async function Cabin({ params }) {
   const { cabinsId } = await params;
-  const bookedDates = await getBookingsByCabinId(cabinsId);
+  const bookedDates = await getBookingDatesByCabinId(cabinsId);
 
   const session = await auth();
   const guestId = session?.user.guestId;

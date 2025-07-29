@@ -46,16 +46,19 @@ export async function getBookingsById(id) {
   return data;
 }
 
-export async function getBookingsByCabinId(id) {
+export async function getBookingDatesByCabinId(id) {
   const { error, data } = await supabase
     .from("bookings")
     .select("*")
     .eq("cabinId", id);
   // .limit(1)
   // .single();
+  console.log(data);
 
   if (error) throw new Error(`could not get booking by id ${error.message}`);
-  console.log(data[0].startDate);
+
+  if (data.length < 1) return;
+
   const bookedDates = data
     .map((date) => {
       return eachDayOfInterval({
