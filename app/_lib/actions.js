@@ -7,11 +7,11 @@ import { redirect } from "next/navigation";
 import supabase from "../supabase";
 
 export async function signInAction() {
-  await signIn("google", { redirectTo: "/account" });
+  return await signIn("google", { redirectTo: "/account" });
 }
 
 export async function signOutAction() {
-  await signOut({ redirectTo: "/" });
+  return await signOut({ redirectTo: "/" });
 }
 
 export async function createBooking(bookingData, currentState, formdata) {
