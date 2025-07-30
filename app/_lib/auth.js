@@ -12,26 +12,28 @@ const authConfig = {
   callbacks: {
     async session({ session, user }) {
       const guest = await getGuest(session.user.email);
-      session.user.guestId = guest?.id;
+      session.user.guestId = guest?.id || null;
+      console.log(guest);
       return session;
     },
     authorized({ auth, request }) {
       return !!auth?.user;
     },
-  },
-  async signIn({ user, account, profile }) {
-    try {
-      const existingGuest = await getGuest(user.email);
-      if (!existingGuest) {
-        await createGuest({
-          email: user.email,
-          fullName: user.name,
-        });
+
+    async signIn({ user, account, profile }) {
+      try {
+        const existingGuest = await getGuest(user.email);
+        if (!existingGuest) {
+          await createGuest({
+            email: user.email,
+            fullName: user.name,
+          });
+        }
+        return true;
+      } catch {
+        return false;
       }
-      return true;
-    } catch {
-      return false;
-    }
+    },
   },
 
   pages: {
@@ -45,3 +47,55 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
+
+// import NextAuth from "next-auth";
+// import Google from "next-auth/providers/google";
+// import { getGuest, createGuest } from "./data-services";
+
+// const authConfig = {
+//   providers: [
+//     Google({
+//       clientId: process.env.AUTH_GOOGLE_ID,
+//       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+//     }),
+//   ],
+//   callbacks: {
+//     async session({ session }) {
+//       try {
+//         const guest = await getGuest(session.user.email);
+//         session.user.guestId = guest?.id || null;
+//       } catch {
+//         session.user.guestId = null;
+//       }
+//       return session;
+//     },
+//     async signIn({ user }) {
+//       try {
+//         const existingGuest = await getGuest(user.email);
+//         if (!existingGuest) {
+//           await createGuest({
+//             email: user.email,
+//             fullName: user.name,
+//           });
+//         }
+//         return true;
+//       } catch (error) {
+//         console.error("SignIn error:", error);
+//         return false;
+//       }
+//     },
+//     authorized({ auth }) {
+//       return !!auth?.user;
+//     },
+//   },
+//   pages: {
+//     signIn: "/login",
+//   },
+// };
+
+// export const {
+//   auth,
+//   signIn,
+//   signOut,
+//   handlers: { GET, POST },
+// } = NextAuth(authConfig);
