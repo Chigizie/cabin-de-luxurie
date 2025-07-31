@@ -7,8 +7,6 @@ async function page() {
   return (
     <div className=" text-lg mt-2">
       <p>Welcome, {session?.user?.name || "Guest"}!</p>
-      <p>Email: {session?.user?.email || "Not provided"}</p>
-      <p>Status: {session ? "Logged in" : "Not logged in"}</p>
     </div>
   );
 }
