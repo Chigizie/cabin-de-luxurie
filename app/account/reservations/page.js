@@ -1,5 +1,5 @@
 import ReservationsList from "@/app/_components/ReservationsList";
-import { auth } from "@/app/auth";
+import { auth } from "@/auth";
 import { getBookingByGuestId } from "@/app/_lib/data-services";
 
 export const metadata = {
