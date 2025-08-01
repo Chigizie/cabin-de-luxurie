@@ -1,5 +1,5 @@
 import SelectCountry from "@/app/_components/SelectCountry";
-import { auth } from "@/app/_lib/auth";
+import { auth } from "@/app/auth";
 
 export const metadata = {
   title: "guests",

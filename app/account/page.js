@@ -1,5 +1,5 @@
 import Navigation from "../_components/Navigation";
-import { auth } from "../_lib/auth";
+import { auth } from "../auth";
 
 async function page() {
   const session = await auth();
