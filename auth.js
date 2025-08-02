@@ -32,9 +32,9 @@ const authConfig = {
         return false;
       }
     },
-    authorized({ auth, request }) {
-      return !!auth?.user;
-    },
+    // authorized({ auth, request }) {
+    //   return !!auth?.user;
+    // },
   },
 
   pages: {
