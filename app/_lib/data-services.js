@@ -84,9 +84,9 @@ export async function getGuest(email) {
 
 export async function createGuest(guestData) {
   const { error, data } = await supabase
-    .from("guest")
+    .from("guests")
     .insert([guestData])
-    .select("*");
+    .select();
 
   if (error) throw new Error("could not create guest");
 }
@@ -99,3 +99,14 @@ export async function createBookings(bookingData) {
 
   if (error) throw new Error(`booking couldn't be created${error.message}`);
 }
+
+// export async function createGuest(newGuest) {
+//   const { data, error } = await supabase.from("guests").insert([newGuest]);
+
+//   if (error) {
+//     console.error(error);
+//     throw new Error("Guest could not be created");
+//   }
+
+//   return data;
+// }

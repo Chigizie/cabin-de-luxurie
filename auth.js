@@ -17,21 +17,22 @@ const authConfig = {
       return session;
     },
 
-    // async signIn({ user, account, profile }) {
-    //   try {
-    //     const existingGuest = await getGuest(user.email);
-    //     if (!existingGuest) {
-    //       await createGuest({
-    //         email: user.email,
-    //         fullName: user.name,
-    //       });
-    //     }
+    async signIn({ user, account, profile }) {
+      try {
+        const existingGuest = await getGuest(user.email);
+        if (!existingGuest) {
+          await createGuest({
+            email: user.email,
+            fullName: user.name,
+          });
+        }
 
-    //     return true;
-    //   } catch {
-    //     return false;
-    //   }
-    // },
+        return true;
+      } catch {
+        return false;
+      }
+    },
+
     authorized({ auth }) {
       console.log(auth);
       return !!auth?.user;
@@ -49,6 +50,19 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth(authConfig);
+
+//  async signIn({ user, account, profile }) {
+//       try {
+//         const existingGuest = await getGuest(user.email);
+
+//         if (!existingGuest)
+//           await createGuest({ email: user.email, fullName: user.name });
+
+//         return true;
+//       } catch {
+//         return false;
+//       }
+//     },
 
 // import NextAuth from "next-auth";
 // import Google from "next-auth/providers/google";
