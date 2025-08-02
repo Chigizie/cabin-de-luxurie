@@ -87,8 +87,9 @@ export async function createGuest(guestData) {
     .from("guests")
     .insert([guestData])
     .select();
-
+  console.log("dullyData", data);
   if (error) throw new Error("could not create guest");
+  return data;
 }
 
 export async function createBookings(bookingData) {

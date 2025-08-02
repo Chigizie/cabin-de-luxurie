@@ -1,4 +1,5 @@
 import SelectCountry from "@/app/_components/SelectCountry";
+import { getGuest } from "@/app/_lib/data-services";
 import { auth } from "@/auth";
 
 export const metadata = {
@@ -7,7 +8,9 @@ export const metadata = {
 
 async function page() {
   const session = await auth();
+
   const user = session?.user;
+
   const { name, email } = user || {};
 
   return (
