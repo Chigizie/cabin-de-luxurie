@@ -16,10 +16,6 @@ const authConfig = {
       // console.log(guest);
       return session;
     },
-    authorized({ auth, request }) {
-      console.log("req", auth);
-      return !!auth?.user;
-    },
 
     async signIn({ user, account, profile }) {
       try {
@@ -35,6 +31,10 @@ const authConfig = {
       } catch {
         return false;
       }
+    },
+    authorized({ auth, request }) {
+      console.log("req", auth);
+      return !!auth?.user;
     },
   },
 
