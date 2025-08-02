@@ -10,28 +10,28 @@ const authConfig = {
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
-      const guest = await getGuest(session.user.email);
-      session.user.guestId = guest?.id || null;
-      // console.log(guest);
-      return session;
-    },
+    // async session({ session, user }) {
+    //   const guest = await getGuest(session.user.email);
+    //   session.user.guestId = guest?.id || null;
+    //   // console.log(guest);
+    //   return session;
+    // },
 
-    async signIn({ user, account, profile }) {
-      try {
-        const existingGuest = await getGuest(user.email);
-        if (!existingGuest) {
-          await createGuest({
-            email: user.email,
-            fullName: user.name,
-          });
-        }
+    // async signIn({ user, account, profile }) {
+    //   try {
+    //     const existingGuest = await getGuest(user.email);
+    //     if (!existingGuest) {
+    //       await createGuest({
+    //         email: user.email,
+    //         fullName: user.name,
+    //       });
+    //     }
 
-        return true;
-      } catch {
-        return false;
-      }
-    },
+    //     return true;
+    //   } catch {
+    //     return false;
+    //   }
+    // },
     authorized({ auth }) {
       console.log(auth);
       return !!auth?.user;
