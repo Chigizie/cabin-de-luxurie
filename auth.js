@@ -33,14 +33,13 @@ const authConfig = {
       }
     },
     authorized({ auth, request }) {
-      console.log("req", auth);
       return !!auth?.user;
     },
   },
 
-  // pages: {
-  //   signIn: "/login",
-  // },
+  pages: {
+    signIn: "/login",
+  },
 };
 
 export const {
