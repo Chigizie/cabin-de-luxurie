@@ -90,7 +90,6 @@ export async function createGuest(guestData) {
 
   console.log("dullyData", guestData);
   if (error) throw new Error("could not create guest");
-  return data;
 }
 
 export async function createBookings(bookingData) {

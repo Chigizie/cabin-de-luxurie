@@ -18,10 +18,6 @@ const authConfig = {
     },
 
     async signIn({ user }) {
-      // const existingGuest = await getGuest(user.email);
-
-      console.log("User1 =>", user);
-
       try {
         const existingGuest = await getGuest(user.email);
         if (!existingGuest) {
@@ -32,7 +28,6 @@ const authConfig = {
         }
         return true;
       } catch (error) {
-        console.log(error.message);
         return false;
       }
     },
