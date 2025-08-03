@@ -17,19 +17,23 @@ const authConfig = {
       return session;
     },
 
-    async signIn({ user }) {
-      const existingGuest = await getGuest(user.email);
-      if (!existingGuest) {
-        await createGuest({
-          fullName: user.name,
-          email: user.email,
-        });
+    async signIn({ user, account, profile }) {
+      try {
+        console.log("d sess", session);
+        const existingGuest = await getGuest(user.email);
+        if (!existingGuest)
+          await createGuest({
+            fullName: user.name,
+            email: user.email,
+          });
+        true;
+      } catch (error) {
+        false;
       }
-      return true;
     },
 
     authorized({ auth }) {
-      console.log(auth);
+      console.log("authtttttttttttt", auth);
       return !!auth?.user;
     },
   },
