@@ -23,6 +23,7 @@ const authConfig = {
       // console.log("User1 =>", existingGuest);
 
       try {
+        return true;
       } catch (error) {}
     },
 
