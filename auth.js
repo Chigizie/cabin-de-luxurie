@@ -19,7 +19,6 @@ const authConfig = {
 
     async signIn({ user, account, profile }) {
       try {
-        console.log("d sess", session);
         const existingGuest = await getGuest(user.email);
         if (!existingGuest) {
           await createGuest({
@@ -34,7 +33,6 @@ const authConfig = {
     },
 
     authorized({ auth }) {
-      console.log("authtttttttttttt", auth);
       return !!auth?.user;
     },
   },
