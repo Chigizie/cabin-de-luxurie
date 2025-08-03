@@ -21,14 +21,15 @@ const authConfig = {
       try {
         console.log("d sess", session);
         const existingGuest = await getGuest(user.email);
-        if (!existingGuest)
+        if (!existingGuest) {
           await createGuest({
             fullName: user.name,
             email: user.email,
           });
-        true;
-      } catch (error) {
-        false;
+        }
+        return true;
+      } catch {
+        return false;
       }
     },
 
