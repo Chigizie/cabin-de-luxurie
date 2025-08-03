@@ -82,15 +82,14 @@ export async function getGuest(email) {
   return data;
 }
 
-export async function createGuest(guestData) {
-  const { data, error } = await supabase
-    .from("guests")
-    .insert([guestData])
-    .select();
+// export async function createGuest(guestData) {
+//   const { data, error } = await supabase
+//     .from("guests")
+//     .insert([guestData])
+//     .select();
 
-  console.log("dullyData", guestData);
-  if (error) throw new Error("could not create guest");
-}
+//   if (error) throw new Error("could not create guest");
+// }
 
 export async function createBookings(bookingData) {
   const { error } = await supabase
@@ -101,13 +100,13 @@ export async function createBookings(bookingData) {
   if (error) throw new Error(`booking couldn't be created${error.message}`);
 }
 
-// export async function createGuest(newGuest) {
-//   const { data, error } = await supabase.from("guests").insert([newGuest]);
+export async function createGuest(newGuest) {
+  const { data, error } = await supabase.from("guests").insert([newGuest]);
 
-//   if (error) {
-//     console.error(error);
-//     throw new Error("Guest could not be created");
-//   }
+  if (error) {
+    console.error(error);
+    throw new Error("Guest could not be created");
+  }
 
-//   return data;
-// }
+  return data;
+}
