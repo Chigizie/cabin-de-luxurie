@@ -17,20 +17,20 @@ const authConfig = {
       return session;
     },
 
-    // async signIn({ user, account, profile }) {
-    //   try {
-    //     const existingGuest = await getGuest(user.email);
+    async signIn({ user, account, profile }) {
+      try {
+        const existingGuest = await getGuest(user.email);
 
-    //     await createGuest({
-    //       email: user.email,
-    //       fullName: user.name,
-    //     });
+        await createGuest({
+          email: user.email,
+          fullName: user.name,
+        });
 
-    //     return true;
-    //   } catch {
-    //     return false;
-    //   }
-    // },
+        return true;
+      } catch {
+        return false;
+      }
+    },
 
     authorized({ auth }) {
       console.log(auth);
