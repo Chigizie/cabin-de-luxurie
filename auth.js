@@ -25,6 +25,7 @@ const authConfig = {
           email: user.email,
         });
       }
+      return true;
     },
 
     authorized({ auth }) {
