@@ -17,17 +17,13 @@ const authConfig = {
       return session;
     },
 
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       try {
         const existingGuest = await getGuest(user.email);
 
-        await createGuest({
-          email: user.email,
-          fullName: user.name,
-        });
-
+        console.log("User1 =>", existingGuest);
         return true;
-      } catch {
+      } catch (error) {
         return false;
       }
     },
