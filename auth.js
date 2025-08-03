@@ -13,18 +13,28 @@ const authConfig = {
     async session({ session, user }) {
       const guest = await getGuest(session.user.email);
       session.user.guestId = guest?.id || null;
-      // console.log(guest);
+
       return session;
     },
 
     async signIn({ user }) {
       // const existingGuest = await getGuest(user.email);
 
-      // console.log("User1 =>", existingGuest);
+      console.log("User1 =>", user);
 
       try {
+        const existingGuest = await getGuest(user.email);
+        if (!existingGuest) {
+          await createGuest({
+            fullName: user.name,
+            email: user.email,
+          });
+        }
         return true;
-      } catch (error) {}
+      } catch (error) {
+        console.log(error.message);
+        return false;
+      }
     },
 
     authorized({ auth }) {

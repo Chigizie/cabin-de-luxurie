@@ -83,7 +83,10 @@ export async function getGuest(email) {
 }
 
 export async function createGuest(guestData) {
-  const { error, data } = await supabase.from("guests").insert([guestData]);
+  const { data, error } = await supabase
+    .from("guests")
+    .insert([guestData])
+    .select();
 
   console.log("dullyData", guestData);
   if (error) throw new Error("could not create guest");
