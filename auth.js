@@ -18,14 +18,12 @@ const authConfig = {
     },
 
     async signIn({ user }) {
-      try {
-        const existingGuest = await getGuest(user.email);
+      // const existingGuest = await getGuest(user.email);
 
-        console.log("User1 =>", existingGuest);
-        return true;
-      } catch (error) {
-        return false;
-      }
+      // console.log("User1 =>", existingGuest);
+
+      try {
+      } catch (error) {}
     },
 
     authorized({ auth }) {
