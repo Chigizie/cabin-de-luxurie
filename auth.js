@@ -17,11 +17,7 @@ const authConfig = {
       return session;
     },
 
-    async signIn({ user, account, profile }) {
-      // const existingGuest = await getGuest(user.email);
-      // await createGuest({ email: user.email, fullName: user.name });
-      return true;
-    },
+    async signIn({ user, account, profile }) {},
 
     authorized({ auth }) {
       return !!auth?.user;
