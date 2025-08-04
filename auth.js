@@ -21,7 +21,13 @@ const authConfig = {
       return session;
     },
 
-    async signIn({ user, account, profile }) {},
+    async signIn({ user, account, profile }) {
+      try {
+        if (user) return true;
+      } catch (error) {
+        return false;
+      }
+    },
   },
 
   pages: {
