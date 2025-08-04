@@ -17,8 +17,6 @@ const authConfig = {
       return session;
     },
 
-    async signIn({ user, account, profile }) {},
-
     authorized({ auth }) {
       return !!auth?.user;
     },
