@@ -23,8 +23,14 @@ const authConfig = {
 
     async signIn({ user, account, profile }) {
       try {
-        if (user) return true;
-      } catch (error) {
+        const existingGuest = await getGuest(user.email);
+        if (!existingGuest)
+          await createGuest({
+            email: user.email,
+            fullName: user.name,
+          });
+        return true;
+      } catch {
         return false;
       }
     },
