@@ -21,10 +21,11 @@ const authConfig = {
       try {
         const existingGuest = await getGuest(user.email);
 
-        if (!existingGuest)
+        if (!existingGuest) {
           await createGuest({ email: user.email, fullName: user.name });
 
-        return true;
+          return true;
+        }
       } catch {
         return false;
       }
