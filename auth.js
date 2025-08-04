@@ -18,8 +18,8 @@ const authConfig = {
     },
 
     async signIn({ user, account, profile }) {
-      const existingGuest = await getGuest(user.email);
-      await createGuest({ email: user.email, fullName: user.name });
+      // const existingGuest = await getGuest(user.email);
+      // await createGuest({ email: user.email, fullName: user.name });
       return true;
     },
 
