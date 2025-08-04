@@ -11,7 +11,7 @@ const authConfig = {
   ],
   callbacks: {
     authorized({ auth }) {
-      return !!auth?.user;
+      return !!auth;
     },
 
     async session({ session, user }) {
